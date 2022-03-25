@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class ApplicationManager {
     public static ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Exam> exams = new ArrayList<Exam>();
+    private static Scanner scanner = new Scanner(System.in);
 
     // studenten in de lijst:
     public static void initialize() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Voer de student <naam> in: ");
         String studentName = scanner.nextLine();
-        System.out.print("Voer de student <nummer> in: ");
+        System.out.print("Voer het student <nummer> in: ");
         int studentNumber = scanner.nextInt();
 
         // voeg studenten toe aan de lijst van studenten
@@ -26,6 +26,12 @@ public class ApplicationManager {
 
         // voeg examens toe aan de lijst van examens
 
+    }
+
+    public static void nextInput() {
+        System.out.println();
+        System.out.println("Klik op enter om door te gaan.");
+        scanner.nextLine();
     }
 
     public static void addStudent(Student student) {
@@ -47,9 +53,6 @@ public class ApplicationManager {
         if (ApplicationManager.students.size() == 0) {
             System.out.println("There are no students enlisted");
         }
-        else (){
-
-        }
 
     }
 
@@ -58,6 +61,8 @@ public class ApplicationManager {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName() + " - " + list.get(i).getNumber());
         }
+
+        nextInput();
 
         Menu menu1 = new Menu();
         menu1.ShowList();
