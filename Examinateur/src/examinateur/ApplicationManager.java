@@ -20,7 +20,20 @@ public class ApplicationManager {
     }
 
     public static void addStudent(Student student) {
-        students.add(student);
+        if (ApplicationManager.students.size() == 0)
+            students.add(student);
+        else {
+            for (int i = 0; i < ApplicationManager.students.size(); i++) {
+                if (student.getNumber() == ApplicationManager.students.get(i).getNumber()) {
+                    System.out.println("Deze studentnummber is al toegewezen aan een student");
+                }
+                else {
+                    students.add(student);
+                }
+                break;
+            }
+        }
+
     }
 
     public static void showStudents(ArrayList<Student> list) {
