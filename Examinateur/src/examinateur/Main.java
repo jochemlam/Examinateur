@@ -18,8 +18,9 @@ public class Main {
             System.out.println("false");
         }*/
 
-        ApplicationManager.initialize();
+        Menu menu1 = new Menu();
 
-        ApplicationManager.showStudents(ApplicationManager.students);
+        menu1.ShowList();
+        menu1.SelectOption();
     }
 }

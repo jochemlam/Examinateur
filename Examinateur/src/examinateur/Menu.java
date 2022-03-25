@@ -7,7 +7,7 @@ public class Menu {
     private short answer;
     Scanner scanner = new Scanner(System.in);
 
-    private void ShowList() {
+    public void ShowList() {
         System.out.println("Menu");
         System.out.println();
         System.out.println("1) Lijst met examens");
@@ -21,7 +21,7 @@ public class Menu {
         System.out.println("0) Afsluiten");
     }
 
-    private void SelectOption() {
+    public void SelectOption() {
 
         System.out.println();
         System.out.println("Maak een keuze tussen 0 en 8:");
@@ -32,10 +32,10 @@ public class Menu {
                 // code
                 break;
             case 2:
-                // code
+                ApplicationManager.showStudents(ApplicationManager.students);
                 break;
             case 3:
-                // code
+                ApplicationManager.initialize();
                 break;
             case 4:
                 // code
