@@ -11,7 +11,7 @@ public class ApplicationManager {
     public static void initialize() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voer de student <naam> in: ");
-        String studentName = scanner.next();
+        String studentName = scanner.nextLine();
         System.out.print("Voer de student <nummer> in: ");
         int studentNumber = scanner.nextInt();
 
