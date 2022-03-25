@@ -2,14 +2,26 @@ package examinateur;
 
 public class Exercise {
     private String question;
-    private int exerciseNumber;
     private Answer correctAnswer;
+    private boolean result;
+    private Answer currentAnswer;
 
-
-    public Exercise(String question, int exerciseNumber, Answer correctAnswer) {
+    public Exercise(String question, Answer correctAnswer) {
         this.question = question;
-        this.exerciseNumber = exerciseNumber;
         this.correctAnswer = correctAnswer;
+        result = false;
+    }
+
+    public void checkQuestion(Answer currentAnswer) {
+        this.currentAnswer = currentAnswer;
+
+        if (this.correctAnswer == currentAnswer) {
+            result = true;
+        }
+    }
+
+    public boolean getResult() {
+        return this.result;
     }
 
     public void changeQuestion(String newText) {
@@ -20,19 +32,11 @@ public class Exercise {
          return this.question;
     }
 
-    public int getExerciseNumber() {
-        return this.exerciseNumber;
-    }
-
     public Answer getCorrectAnswer() {
         return correctAnswer;
     }
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public void setexerciseNumber(int exerciseNumber) {
-        this.exerciseNumber = exerciseNumber;
     }
 }
