@@ -1,30 +1,53 @@
 package examinateur;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Scanner;
 
-public class Exam {
-    private ArrayList<Exercise> exercises;
-    private String examName;
+class Exam {
 
-    public Exam(ArrayList<Exercise> exercises, String examName){ // Maakt een nieuw examen aan
-        this.exercises = exercises;
-        this.examName = examName;
+    public short amountCorrect = 0;
+    public ArrayList<Exercise> exercises = new ArrayList<>();
+
+    public Exam(ArrayList<Exercise> exercises) {
+        this.exercises.addAll(exercises);
     }
 
-    public ArrayList<Exercise> ExamShuffle(ArrayList<Exercise> exercises){ // Shuffled de exercises en returns ze
-        Collections.shuffle(exercises);
-        this.exercises = exercises;
-        return this.exercises;
+    public void totalResults() {
+        for (Exercise exercise : this.exercises) {
+
+            if (exercise.result) {
+                amountCorrect++;
+            }
+        }
+        System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
+        showInput();
     }
 
-    public ArrayList<Exercise> getExercises() {
-        return exercises;
+    private void showInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Wil je je resultaten zien? J/N");
+        String s = scanner.nextLine();
+        if (s.equalsIgnoreCase("j")) {
+            showResults();
+        }
+        else if (s.equalsIgnoreCase("n")) {
+            return;
+        }
+        // mogelijk else hier toevoegen als catch voor als er iets anders ingevuld wordt
     }
 
-    public String getExamName() {
-        return examName;
+    public void showResults() {
+        // print alle uitslagen onder elkaar in volgorde
+        for (int i = 0; i < this.exercises.size(); i++) {
+
+            System.out.println("Jouw antwoord was: " + toString(exercises.get(i).userAnswer) + ", het juiste antwoord is: " + toString(exercises.get(i).correctAnswer) + ".");
+
+            exercises.get(i).getResult();
+        }
+    }
+
+    public String toString(Answer answer) {
+        return answer.get();
     }
 
 }

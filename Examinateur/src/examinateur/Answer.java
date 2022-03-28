@@ -1,17 +1,18 @@
 package examinateur;
 
-public class Answer {
-    private int answer;
+class Answer {
 
-    public Answer(int answer) {
+    private String answer;
+
+    public Answer(String answer) {
         this.answer = answer;
     }
 
-    public int getAnswer() {
-        return answer;
+    public String get() {
+        return this.answer;
     }
 
-    public void setAnswer(int answer) {
+    public void set(String answer) {
         this.answer = answer;
     }
 }

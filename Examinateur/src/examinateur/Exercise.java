@@ -1,42 +1,44 @@
 package examinateur;
 
-public class Exercise {
-    private String question;
-    private Answer correctAnswer;
-    private boolean result;
-    private Answer currentAnswer;
+class Exercise {
+
+    public Answer correctAnswer;
+    public String question;
+
+    // ingevoerde antwoord door leerling
+    public Answer userAnswer;
+
+    // resultaat van vergelijking tussen ingevulde en correcte antwoord
+    public boolean result = false;
 
     public Exercise(String question, Answer correctAnswer) {
-        this.question = question;
         this.correctAnswer = correctAnswer;
-        result = false;
+        this.question = question;
     }
 
-    public void checkQuestion(Answer currentAnswer) {
-        this.currentAnswer = currentAnswer;
-
-        if (this.correctAnswer == currentAnswer) {
-            result = true;
+    public void getResult() {
+        if (result) {
+            System.out.println("Juist!");
+        }
+        else {
+            System.out.println("Onjuist!");
         }
     }
 
-    public boolean getResult() {
-        return this.result;
+    // hier wordt het ingevulde antwoord opgeslagen
+    public void answerQuestion(Answer userAnswer) {
+        this.userAnswer = userAnswer;
+
+        checkAnswer();
+    }
+    // controleert het antwoord en zet het resultaat naar goed als het gegeven antwoord gelijk is aan het opgeslagen correcte antwoord
+    public void checkAnswer() {
+        if (toString(this.correctAnswer).equalsIgnoreCase(toString(this.userAnswer))) {
+            this.result = true;
+        }
     }
 
-    public void changeQuestion(String newText) {
-        this.question = newText;
-    }
-
-    public String getQuestion() {
-         return this.question;
-    }
-
-    public Answer getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
+    public String toString(Answer answer) {
+        return answer.get();
     }
 }
