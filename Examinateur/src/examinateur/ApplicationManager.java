@@ -49,11 +49,26 @@ public class ApplicationManager {
         }
     }
 
-    public static void deleteStudent(Student student) {
+    public static void deleteStudent() {
         if (ApplicationManager.students.size() == 0) {
             System.out.println("There are no students enlisted");
         }
+        else {
+            System.out.println("Vul het student nummer in van de student die je wilt verwijderen");
+            int student = scanner.nextInt();
+            for (int i = 0; i < students.size(); i++) {
+                if (students.get(i).getNumber() == student) {
+                    System.out.println("Student " + students.get(i).getName() + " Verwijderd");
+                    students.remove(i);
+                }
+                else
+                    System.out.println("Dit student nummber is niet toegewezen aan een student");
+            }
+        }
+        Menu menu1 = new Menu();
 
+        menu1.ShowList();
+        menu1.SelectOption();
     }
 
 

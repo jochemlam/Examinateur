@@ -38,7 +38,7 @@ public class Menu {
                 ApplicationManager.initialize();
                 break;
             case 4:
-                // code
+                ApplicationManager.deleteStudent();
                 break;
             case 5:
                 // code
