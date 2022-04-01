@@ -23,6 +23,15 @@ class Exam {
         }
     }
 
+    private boolean hasStudentPassed() {
+        if (amountCorrect > (exercises.size() / 2)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public void totalResults() {
         for (Exercise exercise : this.exercises) {
 
@@ -36,8 +45,22 @@ class Exam {
 
     private void showInput() {
         Scanner scanner = new Scanner(System.in);
+
+        if (hasStudentPassed()) {
+            System.out.println();
+            System.out.println("Je bent geslaagd!");
+            System.out.println();
+            Result results = new Result(this, (amountCorrect + "/" + exercises.size()));
+        }
+        else {
+            System.out.println();
+            System.out.println("Je bent gezakt.");
+            System.out.println();
+        }
+
         System.out.println("Wil je je resultaten zien? J/N");
         String s = scanner.nextLine();
+
         if (s.equalsIgnoreCase("j")) {
             showResults();
         }

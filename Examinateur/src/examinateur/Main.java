@@ -22,12 +22,15 @@ public class Main {
         Exercise vraag2 = new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles"));
         Exercise vraag3 = new Exercise("Hoe heet het programma waarmee de CIA smart-tv’s afluisterde?", new Answer("Ransomware"));
         Exercise vraag4 = new Exercise("Welke computer worm verspreidde zich het snelst?", new Answer("MyDoom"));
+        Exercise vraag5 = new Exercise("welke vraag is dit?", new Answer("5"));
+
 
         ArrayList<Exercise> vragen = new ArrayList<>();
         vragen.add(vraag1);
         vragen.add(vraag2);
         vragen.add(vraag3);
         vragen.add(vraag4);
+        vragen.add(vraag5);
         Exam examen = new Exam(vragen);
 
         examen.startExam();
