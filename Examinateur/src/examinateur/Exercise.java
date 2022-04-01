@@ -25,6 +25,10 @@ class Exercise {
         }
     }
 
+    public void askQuestion() {
+        System.out.println(this.question);
+    }
+
     // hier wordt het ingevulde antwoord opgeslagen
     public void answerQuestion(Answer userAnswer) {
         this.userAnswer = userAnswer;
