@@ -12,6 +12,17 @@ class Exam {
         this.exercises.addAll(exercises);
     }
 
+    public void startExam() {
+        Scanner scanner = new Scanner(System.in);
+
+        for (Exercise exercise : exercises) {
+
+            exercise.askQuestion();
+            exercise.answerQuestion(new Answer(scanner.nextLine()));
+            exercise.getResult();
+        }
+    }
+
     public void totalResults() {
         for (Exercise exercise : this.exercises) {
 
