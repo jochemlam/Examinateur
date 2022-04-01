@@ -9,14 +9,18 @@ public class Main {
     public static void main(String[] args) {
 
 
-        /*Menu menu1 = new Menu();
 
-        menu1.ShowList();
-        menu1.SelectOption();*/
+
+        Menu menu1 = new Menu();
+
+        //menu1.ShowList();
+        //menu1.SelectOption();
         createTempQuestions();
     }
 
     private static void createTempQuestions() {
+        ArrayList<Result> resultaten = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
         Exercise vraag1 = new Exercise("Over welke poort worden https-websites geladen?", new Answer("443"));
         Exercise vraag2 = new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles"));
@@ -31,10 +35,21 @@ public class Main {
         vragen.add(vraag3);
         vragen.add(vraag4);
         vragen.add(vraag5);
-        Exam examen = new Exam(vragen);
+
+        System.out.println("Voer je studentNummer in");
+        int studentNummer = scanner.nextInt();
+
+
+        Exam examen = new Exam(vragen, studentNummer, "Cyber security");
 
         examen.startExam();
         examen.totalResults();
+        Result result1 = new Result(examen, examen.getStudentNummer());
+
+        resultaten.add(result1);
+
+        System.out.println("Student " + resultaten.get(0).getStudentNummer() + " heeft "+ resultaten.get(0).getExam().getExamenOnderwerp() + " Gemaakt");
+
     }
 
     private static boolean compareStrings(String userAnswer, String correctAnswer) {

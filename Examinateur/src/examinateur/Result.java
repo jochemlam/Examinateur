@@ -1,19 +1,21 @@
 package examinateur;
 
+import java.util.ArrayList;
+
 public class Result {
+    protected Exam exam;
+    protected int studentNummer;
 
-    private Exam exam;
-    private String result;
-
-    public Result(Exam exam, String result) {
+    Result(Exam exam, int studentNummer) {
         this.exam = exam;
-        this.result = result;
+        this.studentNummer = studentNummer;
     }
 
-    public void get() {
-        
+    public int getStudentNummer() {
+        return studentNummer;
     }
-    public void set() {
 
+    public Exam getExam() {
+        return exam;
     }
 }

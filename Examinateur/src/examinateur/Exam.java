@@ -5,12 +5,23 @@ import java.util.Scanner;
 
 class Exam {
 
+
+    protected int studentNummer;
+    protected String examenOnderwerp;
     public short amountCorrect = 0;
     public ArrayList<Exercise> exercises = new ArrayList<>();
 
     public Exam(ArrayList<Exercise> exercises) {
         this.exercises.addAll(exercises);
     }
+
+    public Exam(ArrayList<Exercise> exercises, int studentNummer, String examenOnderwerp) {
+        this.exercises.addAll(exercises);
+        this.studentNummer = studentNummer;
+        this.examenOnderwerp = examenOnderwerp;
+    }
+
+
 
     public void startExam() {
         Scanner scanner = new Scanner(System.in);
@@ -40,6 +51,7 @@ class Exam {
             }
         }
         System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
+        System.out.println("Dit examen is gemaakt door " + studentNummer);
         showInput();
     }
 
@@ -50,7 +62,7 @@ class Exam {
             System.out.println();
             System.out.println("Je bent geslaagd!");
             System.out.println();
-            Result results = new Result(this, (amountCorrect + "/" + exercises.size()));
+            //Result results = new Result();
         }
         else {
             System.out.println();
@@ -84,4 +96,11 @@ class Exam {
         return answer.get();
     }
 
+    public int getStudentNummer() {
+        return studentNummer;
+    }
+
+    public String getExamenOnderwerp() {
+        return examenOnderwerp;
+    }
 }
