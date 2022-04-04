@@ -3,7 +3,7 @@ package examinateur;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Exam {
+public class Exam {
 
 
     protected int studentNummer;
