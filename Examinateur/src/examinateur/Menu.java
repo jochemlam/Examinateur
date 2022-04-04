@@ -7,7 +7,7 @@ public class Menu {
     private short answer;
     Scanner scanner = new Scanner(System.in);
 
-    public void ShowList() {
+    public void showList() {
         System.out.println("Menu");
         System.out.println();
         System.out.println("1) Lijst met examens");
@@ -21,7 +21,7 @@ public class Menu {
         System.out.println("0) Afsluiten");
     }
 
-    public void SelectOption() {
+    public void selectOption() {
 
         System.out.println();
         System.out.println("Maak een keuze tussen 0 en 8:");
@@ -29,22 +29,24 @@ public class Menu {
 
         switch(answer) {
             case 1:
-                // code
+                ApplicationManager.showExams();
                 break;
             case 2:
                 ApplicationManager.showStudents(ApplicationManager.students);
                 break;
             case 3:
-                ApplicationManager.initialize();
+                ApplicationManager.addStudent();
                 break;
             case 4:
                 ApplicationManager.deleteStudent();
                 break;
             case 5:
-                // code
+                ApplicationManager.exams.get(0).startExam();
                 break;
             case 6:
                 // code
+                System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
+                ApplicationManager.isStudentGeslaagd(scanner.nextShort());
                 break;
             case 7:
                 // code
@@ -56,7 +58,18 @@ public class Menu {
                 // exit programma
                 System.exit(0);
                 break;
-            default: return;
+            default:
+                System.out.println("Dit is niet een van de opties, probeer het opnieuw.");
         }
+    }
+
+    public void nextInput() {
+        System.out.println();
+        System.out.println("Klik op enter om door te gaan.");
+        scanner.reset();
+        scanner.nextLine();
+
+        showList();
+        selectOption();
     }
 }

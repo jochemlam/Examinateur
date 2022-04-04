@@ -3,7 +3,7 @@ package examinateur;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Exam {
+public class Exam {
 
 
     protected int studentNummer;
@@ -15,9 +15,8 @@ class Exam {
         this.exercises.addAll(exercises);
     }
 
-    public Exam(ArrayList<Exercise> exercises, int studentNummer, String examenOnderwerp) {
+    public Exam(ArrayList<Exercise> exercises, String examenOnderwerp) {
         this.exercises.addAll(exercises);
-        this.studentNummer = studentNummer;
         this.examenOnderwerp = examenOnderwerp;
     }
 
@@ -26,15 +25,20 @@ class Exam {
     public void startExam() {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Voer je studentnummer in");
+        this.studentNummer = scanner.nextInt();
+        scanner.nextLine();
+
         for (Exercise exercise : exercises) {
 
             exercise.askQuestion();
             exercise.answerQuestion(new Answer(scanner.nextLine()));
             exercise.getResult();
         }
+        totalResults();
     }
 
-    private boolean hasStudentPassed() {
+    public boolean hasStudentPassed() {
         if (amountCorrect > (exercises.size() / 2)) {
             return true;
         }
@@ -52,6 +56,7 @@ class Exam {
         }
         System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
         System.out.println("Dit examen is gemaakt door " + studentNummer);
+        ApplicationManager.results.add(new Result(this, studentNummer, hasStudentPassed()));
         showInput();
     }
 
@@ -75,9 +80,10 @@ class Exam {
 
         if (s.equalsIgnoreCase("j")) {
             showResults();
+            ApplicationManager.menu.nextInput();
         }
         else if (s.equalsIgnoreCase("n")) {
-            return;
+            ApplicationManager.menu.nextInput();
         }
         // mogelijk else hier toevoegen als catch voor als er iets anders ingevuld wordt
     }
