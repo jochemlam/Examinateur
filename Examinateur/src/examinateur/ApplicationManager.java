@@ -67,6 +67,27 @@ public class ApplicationManager {
         }
     }
 
+    public static void hasStudentPassedSpecificExam(){
+        System.out.println("Vul het studentenummer in van de student waarvan je het resultaat van wilt zien:");
+        int studentnumber = scanner.nextInt();
+        System.out.println("Vul de toetsnaam in van de toets waarvan je het resultaat wilt zien:");
+        scanner.nextLine();
+        String TestName = scanner.nextLine();
+
+        for (Result result : results) {
+            if (studentnumber == result.getStudentNummer()) {
+                if (TestName.equalsIgnoreCase(result.getExam().getExamenOnderwerp())) {
+                    if (result.isGraduated()) {
+                        System.out.println("De student met leerlingnummer " + studentnumber + " is geslaagd voor het examen: " + result.getExam().getExamenOnderwerp());
+                    } else {
+                        System.out.println("De student met leerlingnummer " + studentnumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamenOnderwerp());
+                    }
+                }
+            }
+        }
+        menu.nextInput();
+    }
+
     public static void deleteStudent() {
         if (ApplicationManager.students.size() == 0) {
             System.out.println("There are no students enlisted");

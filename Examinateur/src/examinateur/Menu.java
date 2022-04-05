@@ -44,12 +44,11 @@ public class Menu {
                 ApplicationManager.exams.get(0).startExam();
                 break;
             case 6:
-                // code
-                System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
-                ApplicationManager.isStudentGeslaagd(scanner.nextShort());
+                ApplicationManager.hasStudentPassedSpecificExam();
                 break;
             case 7:
-                // code
+                System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
+                ApplicationManager.isStudentGeslaagd(scanner.nextInt());
                 break;
             case 8:
                 // code
