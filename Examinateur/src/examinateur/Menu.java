@@ -22,10 +22,21 @@ public class Menu {
     }
 
     public void selectOption() {
-
         System.out.println();
         System.out.println("Maak een keuze tussen 0 en 8:");
-        answer = scanner.nextShort();
+
+        try {
+            answer = scanner.nextShort();
+        }
+
+        catch (Exception e) {
+        scanner.nextLine();
+        selectOption();
+        }
+
+
+        scanner.nextLine();
+
 
         switch(answer) {
             case 1:
@@ -41,34 +52,46 @@ public class Menu {
                 ApplicationManager.deleteStudent();
                 break;
             case 5:
-                ApplicationManager.exams.get(0).startExam();
+                ApplicationManager.askExams();
+//                ApplicationManager.exams.get(0).startExam();
                 break;
             case 6:
                 ApplicationManager.hasStudentPassedSpecificExam();
                 break;
             case 7:
                 System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
-                ApplicationManager.isStudentGeslaagd(scanner.nextInt());
+                int student = scanner.nextInt();
+                scanner.nextLine();
+                ApplicationManager.isStudentGeslaagd(student);
                 break;
             case 8:
                 ApplicationManager.hasPassedMost();
                 break;
             case 0:
-                // exit programma
+                // exit programme
                 System.exit(0);
                 break;
             default:
                 System.out.println("Dit is niet een van de opties, probeer het opnieuw.");
+                selectOption();
+            }
         }
-    }
 
     public void nextInput() {
+        scanner.reset();
         System.out.println();
         System.out.println("Klik op enter om door te gaan.");
-        scanner.reset();
-        scanner.nextLine();
 
-        showList();
-        selectOption();
+        String answer2 = scanner.nextLine();
+        switch(answer2) {
+            case "":
+                showList();
+                selectOption();
+                break;
+            default:
+                nextInput();
+
+        }
+
     }
 }

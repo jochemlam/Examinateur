@@ -22,6 +22,37 @@ public class ApplicationManager {
         Exam exam = new Exam(vragen, "Cyber-Security");
         exams.add(exam);
 
+        vragen = new ArrayList<>();
+        vragen.add(new Exercise("Geef de reactievergelijking van de volledige verbranding van PEO.\n" +
+                                              "De formule van PEO is (CH2CH2O)n.", new Answer("4n CO2 + 4n H2O")));
+        vragen.add(new Exercise("Waar staat Ne voor?", new Answer("Neon")));
+        vragen.add(new Exercise("Hoe heet het tabel met alle elementen?", new Answer("periodiek systeem")));
+        vragen.add(new Exercise("Wie is de leukste scheikunde docent?", new Answer("Vashy")));
+        vragen.add(new Exercise("Waar staat Sk voor?", new Answer("Scheikunde")));
+
+        exam = new Exam(vragen, "Scheikunde");
+        exams.add(exam);
+
+        vragen = new ArrayList<>();
+        vragen.add(new Exercise("Wie is de grondlegger van karate?", new Answer("Funakoshi Gichin")));
+        vragen.add(new Exercise("Wat betekend karate?", new Answer("Lege hand")));
+        vragen.add(new Exercise("Welke karate stijl is het meest praktisch?", new Answer("Wado")));
+        vragen.add(new Exercise("Waar komt muay thai vandaan?", new Answer("Thailand")));
+        vragen.add(new Exercise("Waar kwam muay thai uit voort?", new Answer("krabi krabong")));
+
+        exam = new Exam(vragen, "Martial arts");
+        exams.add(exam);
+
+        vragen = new ArrayList<>();
+        vragen.add(new Exercise("Wat is de best anime?", new Answer("Naruto")));
+        vragen.add(new Exercise("Wie is de meest sophisticated Naruto character?", new Answer("Itachi")));
+        vragen.add(new Exercise("Hoe heette de groep met rogue ninjas?", new Answer("Akatsuki")));
+        vragen.add(new Exercise("Hoe heette het zwaard van Kisame?", new Answer("Samehada")));
+        vragen.add(new Exercise("Best waifu?", new Answer("Hyuuga Hanabi")));
+
+        exam = new Exam(vragen, "Anime");
+        exams.add(exam);
+
         menu.showList();
         menu.selectOption();
     }
@@ -30,7 +61,16 @@ public class ApplicationManager {
         System.out.println("Voer de student <naam> in: ");
         String studentName = scanner.nextLine();
         System.out.println("Voer het student <nummer> in: ");
-        int studentNumber = scanner.nextInt();
+
+        int studentNumber = 0;
+        try{
+            studentNumber = scanner.nextInt();}
+        catch(Exception e){
+            System.out.println("Je hebt een fout gemaakt, probeer opnieuw");
+            scanner.nextLine();
+            addStudent();
+        }
+
         Student student = new Student(studentName, studentNumber);
 
         if (ApplicationManager.students.size() == 0)
@@ -45,10 +85,13 @@ public class ApplicationManager {
                 break;
             }
         }
+        scanner.nextLine();
         menu.nextInput();
     }
 
     public static void isStudentGeslaagd(int studentNumber) {
+
+        boolean notfound = true;
 
         for (Result result : results) {
             // pak een studentnummer uit results waarbij het studentnummer gelijk is aan die van het resultaat
@@ -60,12 +103,16 @@ public class ApplicationManager {
                 else {
                     System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het volgende examen: " + result.getExam().getExamenOnderwerp());
                 }
-            }
-            else {
-                System.out.println("De student met leerlingnummer " + studentNumber + " heeft geen resultaten voor het volgende examen: " + result.getExam().getExamenOnderwerp());
+                notfound = false;
             }
         }
+        if (notfound) {
+        System.out.println("De student met leerlingnummer " + studentNumber + " heeft nog geen resultaten");
+        }
+    menu.nextInput();
     }
+
+
 
     public static void hasStudentPassedSpecificExam(){
         System.out.println("Vul het studentenummer in van de student waarvan je het resultaat van wilt zien:");
@@ -82,9 +129,10 @@ public class ApplicationManager {
                     } else {
                         System.out.println("De student met leerlingnummer " + studentnumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamenOnderwerp());
                     }
-                }
+                }       //add boolean
             }
         }
+
         menu.nextInput();
     }
 
@@ -94,16 +142,31 @@ public class ApplicationManager {
         }
         else {
             System.out.println("Vul het student nummer in van de student die je wilt verwijderen");
-            int student = scanner.nextInt();
+
+            int student = 0;
+            try{
+                student = scanner.nextInt();}
+            catch(Exception e){
+                System.out.println("Je hebt een fout gemaakt, probeer opnieuw");
+                scanner.nextLine();
+                deleteStudent();
+            }
+
+            boolean notfound = true;
+
             for (int i = 0; i < students.size(); i++) {
                 if (students.get(i).getNumber() == student) {
                     System.out.println("Student " + students.get(i).getName() + " Verwijderd");
                     students.remove(i);
+                    notfound = false;
                 }
-                else
-                    System.out.println("Dit student nummber is niet toegewezen aan een student");
+            }
+            if(notfound){
+                System.out.println("Dit student nummer is niet toegewezen aan een student");
+
             }
         }
+
         menu.nextInput();
     }
 
@@ -122,6 +185,29 @@ public class ApplicationManager {
         }
 
         menu.nextInput();
+    }
+
+    public static void askExams(){ //vraagt alle examen onderwerpen op en print die uit.
+        System.out.println("Dit zijn alle examens: ");
+        for (int i = 0; i < exams.size(); i++){
+            System.out.println(i+1+" "+exams.get(i).getExamenOnderwerp());
+        }
+
+        Short answer = scanner.nextShort();
+        switch(answer) {
+            case 1:
+                ApplicationManager.exams.get(0).startExam();
+                break;
+            case 2:
+                ApplicationManager.exams.get(1).startExam();
+                break;
+            case 3:
+                ApplicationManager.exams.get(2).startExam();
+                break;
+            case 4:
+                ApplicationManager.exams.get(3).startExam();
+                break;
+        }
     }
 
     public static void hasPassedMost(){
