@@ -40,6 +40,11 @@ public class Exam {
 
     public boolean hasStudentPassed() {
         if (amountCorrect > (exercises.size() / 2)) {
+            for (int i = 0; i < ApplicationManager.students.size(); i++){
+                if (studentNummer == ApplicationManager.students.get(i).getNumber()){
+                    ApplicationManager.students.get(i).setExamsPassed(+ 1);
+                }
+            }
             return true;
         }
         else {

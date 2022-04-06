@@ -123,4 +123,21 @@ public class ApplicationManager {
 
         menu.nextInput();
     }
+
+    public static void hasPassedMost(){
+        int amount = 0;
+        String name = "";
+        int number = 0;
+
+        for (int i = 0; i < students.size(); i ++){
+            if (students.get(i).getExamsPassed() > amount){
+                amount = students.get(i).getExamsPassed();
+                name = students.get(i).getName();
+                number = students.get(i).getNumber();
+
+            }
+        }
+        System.out.println("Student: " + name + " (" + number + ") " + " Heeft de meeste examens gehaald dit zijn er: " + amount);
+        menu.nextInput();
+    }
 }

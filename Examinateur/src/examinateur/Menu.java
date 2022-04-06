@@ -51,7 +51,7 @@ public class Menu {
                 ApplicationManager.isStudentGeslaagd(scanner.nextInt());
                 break;
             case 8:
-                // code
+                ApplicationManager.hasPassedMost();
                 break;
             case 0:
                 // exit programma
