@@ -9,81 +9,21 @@ public class ApplicationManager {
     public static ArrayList<Result> results = new ArrayList<Result>();
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void initialize() {
+    // stel je hebt een methode M die returnt of het lukt,
+    // roep dan repeatMethod(methodenaam) aan om het eindeloos te proberen totdat het lukt
+    // als je een method zichzelf opnieuw wilt laten uitvoeren geef deze dan een return value van false, zo niet doe dan true
 
-        ArrayList<Exercise> questions = new ArrayList<>();
-        questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
-        questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
-        questions.add(new Exercise("Hoe heet het programma waarmee de CIA smart-tv’s afluisterde?", new Answer("Ransomware")));
-        questions.add(new Exercise("Welke computer worm verspreidde zich het snelst?", new Answer("MyDoom")));
-        questions.add(new Exercise("welke vraag is dit?", new Answer("5")));
-
-        Exam exam = new Exam(questions, "Cyber-Security");
-        exams.add(exam);
-
-        questions = new ArrayList<>();
-        questions.add(new Exercise("Geef de reactievergelijking van de volledige verbranding van PEO.\n" +
-                                              "De formule van PEO is (CH2CH2O)n.", new Answer("4n CO2 + 4n H2O")));
-        questions.add(new Exercise("Waar staat Ne voor?", new Answer("Neon")));
-        questions.add(new Exercise("Hoe heet het tabel met alle elementen?", new Answer("periodiek systeem")));
-        questions.add(new Exercise("Wie is de leukste scheikunde docent?", new Answer("Vashy")));
-        questions.add(new Exercise("Waar staat Sk voor?", new Answer("Scheikunde")));
-
-        exam = new Exam(questions, "Scheikunde");
-        exams.add(exam);
-
-        questions = new ArrayList<>();
-        questions.add(new Exercise("Wie is de grondlegger van karate?", new Answer("Funakoshi Gichin")));
-        questions.add(new Exercise("Wat betekend karate?", new Answer("Lege hand")));
-        questions.add(new Exercise("Welke karate stijl is het meest praktisch?", new Answer("Wado")));
-        questions.add(new Exercise("Waar komt muay thai vandaan?", new Answer("Thailand")));
-        questions.add(new Exercise("Waar kwam muay thai uit voort?", new Answer("krabi krabong")));
-
-        exam = new Exam(questions, "Martial arts");
-        exams.add(exam);
-
-        questions = new ArrayList<>();
-        questions.add(new Exercise("Wat is de beste anime?", new Answer("Naruto")));
-        questions.add(new Exercise("Wie is de meest sophisticated Naruto character?", new Answer("Itachi")));
-        questions.add(new Exercise("Hoe heette de groep met rogue ninjas?", new Answer("Akatsuki")));
-        questions.add(new Exercise("Hoe heette het zwaard van Kisame?", new Answer("Samehada")));
-        questions.add(new Exercise("Best waifu?", new Answer("Hyuuga Hanabi")));
-
-        exam = new Exam(questions, "Anime");
-        exams.add(exam);
-
-        Main.isRunning = true;
+    /*private interface F {
+        boolean apply();
     }
 
-    public static void addStudent() {
-        System.out.println("Voer de student <naam> in: ");
-        String studentName = scanner.nextLine();
-        System.out.println("Voer het student <nummer> in: ");
-
-        int studentNumber = 0;
-        try{
-            studentNumber = scanner.nextInt();}
-        catch(Exception e){
-            System.out.println("Je hebt een fout gemaakt, probeer opnieuw");
-            scanner.nextLine();
-            addStudent();
+    public static void repeatMethod(F f) {
+        while (!f.apply()) {
+            System.out.println("opnieuw");
         }
+    }*/
 
-        Student student = new Student(studentName, studentNumber);
-
-        if (ApplicationManager.students.size() == 0)
-            students.add(student);
-        else {
-            for (int i = 0; i < ApplicationManager.students.size(); i++) {
-                if (student.getNumber() == ApplicationManager.students.get(i).getNumber()) {
-                    System.out.println("Dit studentnummber is al toegewezen aan een student");
-                } else {
-                    students.add(student);
-                }
-                break;
-            }
-        }
-    }
+    // dit stukje heeft pascal uitgelegd en geschreven, maar het werkt niet en wij hebben geen idee hoe we het op moeten lossen omdat we hier nooit iets over geleerd hebben
 
     public static void hasStudentPassed(int studentNumber) {
 
@@ -107,10 +47,8 @@ public class ApplicationManager {
         }
     }
 
-
-
     public static void hasStudentPassedSpecificExam(){
-        System.out.println("Vul het studentenummer in van de student waarvan je het resultaat van wilt zien:");
+        System.out.println("Vul het studentnummer in van de student waarvan je het resultaat van wilt zien:");
         int studentNumber = scanner.nextInt();
         System.out.println("Vul de toetsnaam in van de toets waarvan je het resultaat wilt zien:");
         scanner.nextLine();
@@ -149,7 +87,7 @@ public class ApplicationManager {
 
             for (int i = 0; i < students.size(); i++) {
                 if (students.get(i).getNumber() == student) {
-                    System.out.println("Student " + students.get(i).getName() + " Verwijderd");
+                    System.out.println("Student " + students.get(i).getName() + " is verwijderd.");
                     students.remove(i);
                     notfound = false;
                 }

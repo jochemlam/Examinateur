@@ -5,7 +5,7 @@ public class Main {
     public static boolean isRunning;
 
     public static void main(String[] args) {
-        ApplicationManager.initialize();
+        Initialize.run();
         update();
     }
 

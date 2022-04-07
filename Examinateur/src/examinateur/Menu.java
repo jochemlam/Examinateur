@@ -30,7 +30,6 @@ public class Menu {
         try {
             answer = scanner.nextShort();
         }
-
         catch (Exception e) {
         scanner.nextLine();
         selectOption();
@@ -46,7 +45,19 @@ public class Menu {
                 ApplicationManager.showStudents(ApplicationManager.students);
                 break;
             case 3:
-                ApplicationManager.addStudent();
+                // zet de gegeven naam en nummer om naar een nieuwe student die in de arraylist students gezet wordt
+                try {
+                    System.out.println("Voer de student <naam> in: ");
+                    String newName = scanner.nextLine();
+                    System.out.println("Voer het student <nummer> in: ");
+                    int newNumber = scanner.nextInt();
+                    scanner.nextLine();
+                    new Student(newName, newNumber).addStudentToList();
+                }
+                catch (Exception e) {
+                    System.out.println("Voer een studentnummer in.");
+            }
+
                 break;
             case 4:
                 ApplicationManager.deleteStudent();
@@ -59,9 +70,9 @@ public class Menu {
                 break;
             case 7:
                 System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
-                int student = scanner.nextInt();
+                int checkNumber = scanner.nextInt();
                 scanner.nextLine();
-                ApplicationManager.hasStudentPassed(student);
+                ApplicationManager.hasStudentPassed(checkNumber);
                 break;
             case 8:
                 ApplicationManager.hasPassedMost();
@@ -73,8 +84,9 @@ public class Menu {
                 System.out.println("Dit is niet een van de opties, probeer het opnieuw.");
                 selectOption();
             }
-
-            nextInput();
+            if (Main.isRunning) {
+                nextInput();
+            }
         }
 
     private void nextInput() {
