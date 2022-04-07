@@ -7,7 +7,8 @@ public class Menu {
     private short answer;
     Scanner scanner = new Scanner(System.in);
 
-    public void showList() {
+    public void showMenu() {
+
         System.out.println("Menu");
         System.out.println();
         System.out.println("1) Lijst met examens");
@@ -19,9 +20,10 @@ public class Menu {
         System.out.println("7) Welke examens heeft de student gehaald?");
         System.out.println("8) Welke student heeft de meeste examens gehaald?");
         System.out.println("0) Afsluiten");
+        selectOption();
     }
 
-    public void selectOption() {
+    private void selectOption() {
         System.out.println();
         System.out.println("Maak een keuze tussen 0 en 8:");
 
@@ -34,9 +36,7 @@ public class Menu {
         selectOption();
         }
 
-
         scanner.nextLine();
-
 
         switch(answer) {
             case 1:
@@ -53,7 +53,6 @@ public class Menu {
                 break;
             case 5:
                 ApplicationManager.askExams();
-//                ApplicationManager.exams.get(0).startExam();
                 break;
             case 6:
                 ApplicationManager.hasStudentPassedSpecificExam();
@@ -69,29 +68,21 @@ public class Menu {
                 break;
             case 0:
                 // exit programme
-                System.exit(0);
+                Main.isRunning = false;
+                //System.exit(0);
                 break;
             default:
                 System.out.println("Dit is niet een van de opties, probeer het opnieuw.");
                 selectOption();
             }
+
+            nextInput();
         }
 
-    public void nextInput() {
+    private void nextInput() {
         scanner.reset();
         System.out.println();
         System.out.println("Klik op enter om door te gaan.");
-
-        String answer2 = scanner.nextLine();
-        switch(answer2) {
-            case "":
-                showList();
-                selectOption();
-                break;
-            default:
-                nextInput();
-
-        }
-
+        scanner.nextLine();
     }
 }

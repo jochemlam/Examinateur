@@ -62,11 +62,10 @@ public class Exam {
         System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
         System.out.println("Dit examen is gemaakt door " + studentNumber);
         ApplicationManager.results.add(new Result(this, studentNumber, hasStudentPassed()));
-        showInput();
+        showPassResults();
     }
 
-    private void showInput() {
-        Scanner scanner = new Scanner(System.in);
+    private void showPassResults() {
 
         if (hasStudentPassed()) {
             System.out.println();
@@ -79,16 +78,17 @@ public class Exam {
             System.out.println("Je bent gezakt.");
             System.out.println();
         }
+        showAnswers();
+    }
+
+    private void showAnswers() {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Wil je je resultaten zien? J/N");
         String s = scanner.nextLine();
 
         if (s.equalsIgnoreCase("j")) {
             showResults();
-            ApplicationManager.menu.nextInput();
-        }
-        else if (s.equalsIgnoreCase("n")) {
-            ApplicationManager.menu.nextInput();
         }
         // mogelijk else hier toevoegen als catch voor als er iets anders ingevuld wordt
     }

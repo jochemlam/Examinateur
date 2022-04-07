@@ -53,8 +53,7 @@ public class ApplicationManager {
         exam = new Exam(vragen, "Anime");
         exams.add(exam);
 
-        menu.showList();
-        menu.selectOption();
+        Main.isRunning = true;
     }
 
     public static void addStudent() {
@@ -85,8 +84,6 @@ public class ApplicationManager {
                 break;
             }
         }
-        scanner.nextLine();
-        menu.nextInput();
     }
 
     public static void isStudentGeslaagd(int studentNumber) {
@@ -109,7 +106,6 @@ public class ApplicationManager {
         if (notfound) {
         System.out.println("De student met leerlingnummer " + studentNumber + " heeft nog geen resultaten");
         }
-    menu.nextInput();
     }
 
 
@@ -132,8 +128,6 @@ public class ApplicationManager {
                 }       //add boolean
             }
         }
-
-        menu.nextInput();
     }
 
     public static void deleteStudent() {
@@ -166,8 +160,6 @@ public class ApplicationManager {
 
             }
         }
-
-        menu.nextInput();
     }
 
 
@@ -175,7 +167,6 @@ public class ApplicationManager {
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i).getName() + " - " + list.get(i).getNumber());
         }
-        menu.nextInput();
     }
 
     public static void showExams(){ //vraagt alle examen onderwerpen op en print die uit.
@@ -183,8 +174,6 @@ public class ApplicationManager {
         for (int i = 0; i < exams.size(); i++){
             System.out.println(exams.get(i).getExamSubject());
         }
-
-        menu.nextInput();
     }
 
     public static void askExams(){ //vraagt alle examen onderwerpen op en print die uit.
@@ -224,6 +213,5 @@ public class ApplicationManager {
                 System.out.println("Student: " + students.get(a).getName() + " (" + students.get(a).getNumber() + ") " + " Heeft de meeste examens gehaald dit zijn er: " + amount);
             }
         }
-        menu.nextInput();
     }
 }
