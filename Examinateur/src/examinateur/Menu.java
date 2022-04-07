@@ -60,7 +60,43 @@ public class Menu {
 
                 break;
             case 4:
-                ApplicationManager.deleteStudent();
+                //ApplicationManager.deleteStudent();
+
+                if (ApplicationManager.students.size() == 0) {
+                    System.out.println("Er zijn geen studenten geregistreerd.");
+                    return;
+                }
+
+                int number;
+
+                try {
+                    System.out.println("Vul het leerlingnummer in van de student die je wilt verwijderen.");
+                    number = scanner.nextInt();
+                    scanner.nextLine();
+                }
+                catch (Exception e) {
+                    System.out.println("Er is iets fout gegaan bij het invoeren van het studentnummer.");
+                    System.out.println("Probeer het opnieuw.");
+                    return;
+                }
+
+                for (int i = 0; i < ApplicationManager.students.size(); i++) {
+                    // wanneer het opgeslagen studentnummer overeen komt met het ingevoerde studentnummer
+                    if (ApplicationManager.students.get(i).getNumber() == number) {
+
+                        System.out.println("Weet je zeker dat je deze student wilt verwijderen? J/N");
+                        if (!scanner.nextLine().equalsIgnoreCase("j")) {
+                            return;
+                        }
+                    }
+                    else {
+                        System.out.println("Dit studentnummer is niet toegewezen aan een student.");
+                        return;
+                    }
+                    System.out.println("Student " + ApplicationManager.students.get(i).getName() + " (" + ApplicationManager.students.get(i).getNumber() + ") is verwijderd.");
+                    ApplicationManager.students.get(i).deleteStudent();
+                }
+
                 break;
             case 5:
                 ApplicationManager.askExams();

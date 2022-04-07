@@ -13,6 +13,8 @@ public class ApplicationManager {
     // roep dan repeatMethod(methodenaam) aan om het eindeloos te proberen totdat het lukt
     // als je een method zichzelf opnieuw wilt laten uitvoeren geef deze dan een return value van false, zo niet doe dan true
 
+    // dit stukje heeft pascal uitgelegd en geschreven, maar het werkt niet en wij hebben geen idee hoe we het op moeten lossen omdat we hier nooit iets over geleerd hebben
+
     /*private interface F {
         boolean apply();
     }
@@ -22,8 +24,6 @@ public class ApplicationManager {
             System.out.println("opnieuw");
         }
     }*/
-
-    // dit stukje heeft pascal uitgelegd en geschreven, maar het werkt niet en wij hebben geen idee hoe we het op moeten lossen omdat we hier nooit iets over geleerd hebben
 
     public static void hasStudentPassed(int studentNumber) {
 
@@ -63,38 +63,6 @@ public class ApplicationManager {
                         System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamSubject());
                     }
                 }       //add boolean
-            }
-        }
-    }
-
-    public static void deleteStudent() {
-        if (ApplicationManager.students.size() == 0) {
-            System.out.println("There are no students enlisted");
-        }
-        else {
-            System.out.println("Vul het student nummer in van de student die je wilt verwijderen");
-
-            int student = 0;
-            try{
-                student = scanner.nextInt();}
-            catch(Exception e){
-                System.out.println("Je hebt een fout gemaakt, probeer opnieuw");
-                scanner.nextLine();
-                deleteStudent();
-            }
-
-            boolean notfound = true;
-
-            for (int i = 0; i < students.size(); i++) {
-                if (students.get(i).getNumber() == student) {
-                    System.out.println("Student " + students.get(i).getName() + " is verwijderd.");
-                    students.remove(i);
-                    notfound = false;
-                }
-            }
-            if(notfound){
-                System.out.println("Dit student nummer is niet toegewezen aan een student");
-
             }
         }
     }

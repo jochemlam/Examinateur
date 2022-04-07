@@ -8,18 +8,6 @@ public class Student {
     private int number;
     private int examsPassed;
 
-    public Student() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Voer de student <naam> in: ");
-        this.name = scanner.nextLine();
-        System.out.println("Voer het student <nummer> in: ");
-        this.number = scanner.nextInt();
-        scanner.nextLine();
-
-        this.examsPassed = 0;
-        ApplicationManager.students.add(this);
-    }
     public Student(String name, int number) {
         if (isNumberAvailable(number)) {
             this.name = name;
@@ -29,6 +17,10 @@ public class Student {
         else {
             System.out.println("Dit studentnummer is al toegewezen aan een student");
         }
+    }
+
+    public void deleteStudent() {
+        ApplicationManager.students.remove(this);
     }
 
     public void addStudentToList() {
