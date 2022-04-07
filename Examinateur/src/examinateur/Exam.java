@@ -6,14 +6,10 @@ import java.util.Scanner;
 public class Exam {
 
 
-    protected int studentNumber;
-    protected String examSubject;
-    public short amountCorrect = 0;
-    public ArrayList<Exercise> exercises = new ArrayList<>();
-
-    public Exam(ArrayList<Exercise> exercises) {
-        this.exercises.addAll(exercises);
-    }
+    private int studentNumber;
+    private String examSubject;
+    private short amountCorrect = 0;
+    private ArrayList<Exercise> exercises = new ArrayList<>();
 
     public Exam(ArrayList<Exercise> exercises, String examSubject) {
         this.exercises.addAll(exercises);
@@ -71,7 +67,6 @@ public class Exam {
             System.out.println();
             System.out.println("Je bent geslaagd!");
             System.out.println();
-            //Result results = new Result();
         }
         else {
             System.out.println();
@@ -105,10 +100,6 @@ public class Exam {
 
     public String toString(Answer answer) {
         return answer.get();
-    }
-
-    public int getStudentNumber() {
-        return studentNumber;
     }
 
     public String getExamSubject() {

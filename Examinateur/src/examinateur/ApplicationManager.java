@@ -7,50 +7,49 @@ public class ApplicationManager {
     public static ArrayList<Student> students = new ArrayList<Student>();
     public static ArrayList<Exam> exams = new ArrayList<Exam>();
     public static ArrayList<Result> results = new ArrayList<Result>();
-    public static Menu menu = new Menu();
     private static Scanner scanner = new Scanner(System.in);
 
     public static void initialize() {
 
-        ArrayList<Exercise> vragen = new ArrayList<>();
-        vragen.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
-        vragen.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
-        vragen.add(new Exercise("Hoe heet het programma waarmee de CIA smart-tv’s afluisterde?", new Answer("Ransomware")));
-        vragen.add(new Exercise("Welke computer worm verspreidde zich het snelst?", new Answer("MyDoom")));
-        vragen.add(new Exercise("welke vraag is dit?", new Answer("5")));
+        ArrayList<Exercise> questions = new ArrayList<>();
+        questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
+        questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
+        questions.add(new Exercise("Hoe heet het programma waarmee de CIA smart-tv’s afluisterde?", new Answer("Ransomware")));
+        questions.add(new Exercise("Welke computer worm verspreidde zich het snelst?", new Answer("MyDoom")));
+        questions.add(new Exercise("welke vraag is dit?", new Answer("5")));
 
-        Exam exam = new Exam(vragen, "Cyber-Security");
+        Exam exam = new Exam(questions, "Cyber-Security");
         exams.add(exam);
 
-        vragen = new ArrayList<>();
-        vragen.add(new Exercise("Geef de reactievergelijking van de volledige verbranding van PEO.\n" +
+        questions = new ArrayList<>();
+        questions.add(new Exercise("Geef de reactievergelijking van de volledige verbranding van PEO.\n" +
                                               "De formule van PEO is (CH2CH2O)n.", new Answer("4n CO2 + 4n H2O")));
-        vragen.add(new Exercise("Waar staat Ne voor?", new Answer("Neon")));
-        vragen.add(new Exercise("Hoe heet het tabel met alle elementen?", new Answer("periodiek systeem")));
-        vragen.add(new Exercise("Wie is de leukste scheikunde docent?", new Answer("Vashy")));
-        vragen.add(new Exercise("Waar staat Sk voor?", new Answer("Scheikunde")));
+        questions.add(new Exercise("Waar staat Ne voor?", new Answer("Neon")));
+        questions.add(new Exercise("Hoe heet het tabel met alle elementen?", new Answer("periodiek systeem")));
+        questions.add(new Exercise("Wie is de leukste scheikunde docent?", new Answer("Vashy")));
+        questions.add(new Exercise("Waar staat Sk voor?", new Answer("Scheikunde")));
 
-        exam = new Exam(vragen, "Scheikunde");
+        exam = new Exam(questions, "Scheikunde");
         exams.add(exam);
 
-        vragen = new ArrayList<>();
-        vragen.add(new Exercise("Wie is de grondlegger van karate?", new Answer("Funakoshi Gichin")));
-        vragen.add(new Exercise("Wat betekend karate?", new Answer("Lege hand")));
-        vragen.add(new Exercise("Welke karate stijl is het meest praktisch?", new Answer("Wado")));
-        vragen.add(new Exercise("Waar komt muay thai vandaan?", new Answer("Thailand")));
-        vragen.add(new Exercise("Waar kwam muay thai uit voort?", new Answer("krabi krabong")));
+        questions = new ArrayList<>();
+        questions.add(new Exercise("Wie is de grondlegger van karate?", new Answer("Funakoshi Gichin")));
+        questions.add(new Exercise("Wat betekend karate?", new Answer("Lege hand")));
+        questions.add(new Exercise("Welke karate stijl is het meest praktisch?", new Answer("Wado")));
+        questions.add(new Exercise("Waar komt muay thai vandaan?", new Answer("Thailand")));
+        questions.add(new Exercise("Waar kwam muay thai uit voort?", new Answer("krabi krabong")));
 
-        exam = new Exam(vragen, "Martial arts");
+        exam = new Exam(questions, "Martial arts");
         exams.add(exam);
 
-        vragen = new ArrayList<>();
-        vragen.add(new Exercise("Wat is de best anime?", new Answer("Naruto")));
-        vragen.add(new Exercise("Wie is de meest sophisticated Naruto character?", new Answer("Itachi")));
-        vragen.add(new Exercise("Hoe heette de groep met rogue ninjas?", new Answer("Akatsuki")));
-        vragen.add(new Exercise("Hoe heette het zwaard van Kisame?", new Answer("Samehada")));
-        vragen.add(new Exercise("Best waifu?", new Answer("Hyuuga Hanabi")));
+        questions = new ArrayList<>();
+        questions.add(new Exercise("Wat is de beste anime?", new Answer("Naruto")));
+        questions.add(new Exercise("Wie is de meest sophisticated Naruto character?", new Answer("Itachi")));
+        questions.add(new Exercise("Hoe heette de groep met rogue ninjas?", new Answer("Akatsuki")));
+        questions.add(new Exercise("Hoe heette het zwaard van Kisame?", new Answer("Samehada")));
+        questions.add(new Exercise("Best waifu?", new Answer("Hyuuga Hanabi")));
 
-        exam = new Exam(vragen, "Anime");
+        exam = new Exam(questions, "Anime");
         exams.add(exam);
 
         Main.isRunning = true;
@@ -86,7 +85,7 @@ public class ApplicationManager {
         }
     }
 
-    public static void isStudentGeslaagd(int studentNumber) {
+    public static void hasStudentPassed(int studentNumber) {
 
         boolean notfound = true;
 
@@ -177,26 +176,21 @@ public class ApplicationManager {
     }
 
     public static void askExams(){ //vraagt alle examen onderwerpen op en print die uit.
-        System.out.println("Dit zijn alle examens: ");
+        System.out.println("Maak een keuze uit de volgende examens: ");
         for (int i = 0; i < exams.size(); i++){
-            System.out.println(i+1+" "+exams.get(i).getExamSubject());
+            System.out.println(i + 1 + ") " + exams.get(i).getExamSubject());
         }
 
-        Short answer = scanner.nextShort();
-        switch(answer) {
-            case 1:
-                ApplicationManager.exams.get(0).startExam();
-                break;
-            case 2:
-                ApplicationManager.exams.get(1).startExam();
-                break;
-            case 3:
-                ApplicationManager.exams.get(2).startExam();
-                break;
-            case 4:
-                ApplicationManager.exams.get(3).startExam();
-                break;
+        Short choice = scanner.nextShort();
+
+        if (choice <= exams.size()) {
+            exams.get(choice - 1).startExam();
         }
+        else {
+            System.out.println("Dit examen bestaat niet, kies een van de beschikbare opties.");
+            askExams();
+        }
+
     }
 
     public static void hasPassedMost(){

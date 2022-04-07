@@ -24,14 +24,6 @@ public class Student {
         return examsPassed;
     }
 
-    public void setName(String newName) {
-        this.name = newName;
-    }
-
-    public void setNumber(int newNumber) {
-        this.number = newNumber;
-    }
-
     public void setExamsPassed(int examsPassed) {
         this.examsPassed = examsPassed;
     }

@@ -1,6 +1,6 @@
 package examinateur;
 
-class Answer {
+public class Answer {
 
     private String answer;
 
@@ -10,9 +10,5 @@ class Answer {
 
     public String get() {
         return this.answer;
-    }
-
-    public void set(String answer) {
-        this.answer = answer;
     }
 }

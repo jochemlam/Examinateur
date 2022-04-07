@@ -1,7 +1,5 @@
 package examinateur;
 
-import static examinateur.ApplicationManager.menu;
-
 public class Main {
 
     public static boolean isRunning;
@@ -17,11 +15,5 @@ public class Main {
         while (isRunning) {
             menu.showMenu();
         }
-    }
-
-    private static void createTempQuestions() {
-
-        //System.out.println("Student " + ApplicationManager.results.get(0).getStudentNummer() + " heeft "+ ApplicationManager.results.get(0).getExam().getExamenOnderwerp() + " Gemaakt");
-
     }
 }

@@ -1,6 +1,6 @@
 package examinateur;
 
-class Exercise {
+public class Exercise {
 
     public Answer correctAnswer;
     public String question;

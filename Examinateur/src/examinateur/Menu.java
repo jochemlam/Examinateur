@@ -61,15 +61,13 @@ public class Menu {
                 System.out.println("Vul het studentnummer in van de student waarvan je de resultaten in wilt zien: ");
                 int student = scanner.nextInt();
                 scanner.nextLine();
-                ApplicationManager.isStudentGeslaagd(student);
+                ApplicationManager.hasStudentPassed(student);
                 break;
             case 8:
                 ApplicationManager.hasPassedMost();
                 break;
             case 0:
-                // exit programme
                 Main.isRunning = false;
-                //System.exit(0);
                 break;
             default:
                 System.out.println("Dit is niet een van de opties, probeer het opnieuw.");
