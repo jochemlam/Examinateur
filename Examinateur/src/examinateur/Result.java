@@ -1,20 +1,18 @@
 package examinateur;
 
-import java.util.ArrayList;
-
 public class Result {
-    protected Exam exam;
-    protected int studentNummer;
-    protected boolean isGeslaagd;
+    private Exam exam;
+    private int studentNumber;
+    private boolean hasPassed;
 
-    Result(Exam exam, int studentNummer, boolean isGraduated) {
+    public Result(Exam exam, int studentNumber, boolean isGraduated) {
         this.exam = exam;
-        this.studentNummer = studentNummer;
-        this.isGeslaagd = isGraduated;
+        this.studentNumber = studentNumber;
+        this.hasPassed = isGraduated;
     }
 
-    public int getStudentNummer() {
-        return this.studentNummer;
+    public int getStudentNumber() {
+        return this.studentNumber;
     }
 
     public Exam getExam() {
@@ -22,6 +20,6 @@ public class Result {
     }
 
     public boolean isGraduated() {
-        return this.isGeslaagd;
+        return this.hasPassed;
     }
 }

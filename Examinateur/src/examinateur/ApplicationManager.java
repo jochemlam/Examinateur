@@ -95,13 +95,13 @@ public class ApplicationManager {
 
         for (Result result : results) {
             // pak een studentnummer uit results waarbij het studentnummer gelijk is aan die van het resultaat
-            if (studentNumber == result.getStudentNummer()) {
+            if (studentNumber == result.getStudentNumber()) {
                 // is de student geslaagd
                 if (result.isGraduated()) {
-                    System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het volgende examen: " + result.getExam().getExamenOnderwerp());
+                    System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het volgende examen: " + result.getExam().getExamSubject());
                 }
                 else {
-                    System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het volgende examen: " + result.getExam().getExamenOnderwerp());
+                    System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het volgende examen: " + result.getExam().getExamSubject());
                 }
                 notfound = false;
             }
@@ -116,18 +116,18 @@ public class ApplicationManager {
 
     public static void hasStudentPassedSpecificExam(){
         System.out.println("Vul het studentenummer in van de student waarvan je het resultaat van wilt zien:");
-        int studentnumber = scanner.nextInt();
+        int studentNumber = scanner.nextInt();
         System.out.println("Vul de toetsnaam in van de toets waarvan je het resultaat wilt zien:");
         scanner.nextLine();
         String TestName = scanner.nextLine();
 
         for (Result result : results) {
-            if (studentnumber == result.getStudentNummer()) {
-                if (TestName.equalsIgnoreCase(result.getExam().getExamenOnderwerp())) {
+            if (studentNumber == result.getStudentNumber()) {
+                if (TestName.equalsIgnoreCase(result.getExam().getExamSubject())) {
                     if (result.isGraduated()) {
-                        System.out.println("De student met leerlingnummer " + studentnumber + " is geslaagd voor het examen: " + result.getExam().getExamenOnderwerp());
+                        System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het examen: " + result.getExam().getExamSubject());
                     } else {
-                        System.out.println("De student met leerlingnummer " + studentnumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamenOnderwerp());
+                        System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamSubject());
                     }
                 }       //add boolean
             }
@@ -181,7 +181,7 @@ public class ApplicationManager {
     public static void showExams(){ //vraagt alle examen onderwerpen op en print die uit.
         System.out.println("Dit zijn alle examens: ");
         for (int i = 0; i < exams.size(); i++){
-            System.out.println(exams.get(i).getExamenOnderwerp());
+            System.out.println(exams.get(i).getExamSubject());
         }
 
         menu.nextInput();
@@ -190,7 +190,7 @@ public class ApplicationManager {
     public static void askExams(){ //vraagt alle examen onderwerpen op en print die uit.
         System.out.println("Dit zijn alle examens: ");
         for (int i = 0; i < exams.size(); i++){
-            System.out.println(i+1+" "+exams.get(i).getExamenOnderwerp());
+            System.out.println(i+1+" "+exams.get(i).getExamSubject());
         }
 
         Short answer = scanner.nextShort();

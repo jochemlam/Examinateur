@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Exam {
 
 
-    protected int studentNummer;
-    protected String examenOnderwerp;
+    protected int studentNumber;
+    protected String examSubject;
     public short amountCorrect = 0;
     public ArrayList<Exercise> exercises = new ArrayList<>();
 
@@ -15,9 +15,9 @@ public class Exam {
         this.exercises.addAll(exercises);
     }
 
-    public Exam(ArrayList<Exercise> exercises, String examenOnderwerp) {
+    public Exam(ArrayList<Exercise> exercises, String examSubject) {
         this.exercises.addAll(exercises);
-        this.examenOnderwerp = examenOnderwerp;
+        this.examSubject = examSubject;
     }
 
 
@@ -26,7 +26,7 @@ public class Exam {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Voer je studentnummer in");
-        this.studentNummer = scanner.nextInt();
+        this.studentNumber = scanner.nextInt();
         scanner.nextLine();
 
         for (Exercise exercise : exercises) {
@@ -41,7 +41,7 @@ public class Exam {
     public boolean hasStudentPassed() {
         if (amountCorrect > (exercises.size() / 2)) {
             for (int i = 0; i < ApplicationManager.students.size(); i++){
-                if (studentNummer == ApplicationManager.students.get(i).getNumber()){
+                if (studentNumber == ApplicationManager.students.get(i).getNumber()){
                     ApplicationManager.students.get(i).setExamsPassed(+ 1);
                 }
             }
@@ -60,8 +60,8 @@ public class Exam {
             }
         }
         System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
-        System.out.println("Dit examen is gemaakt door " + studentNummer);
-        ApplicationManager.results.add(new Result(this, studentNummer, hasStudentPassed()));
+        System.out.println("Dit examen is gemaakt door " + studentNumber);
+        ApplicationManager.results.add(new Result(this, studentNumber, hasStudentPassed()));
         showInput();
     }
 
@@ -107,11 +107,11 @@ public class Exam {
         return answer.get();
     }
 
-    public int getStudentNummer() {
-        return studentNummer;
+    public int getStudentNumber() {
+        return studentNumber;
     }
 
-    public String getExamenOnderwerp() {
-        return examenOnderwerp;
+    public String getExamSubject() {
+        return examSubject;
     }
 }

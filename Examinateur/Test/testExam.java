@@ -1,11 +1,16 @@
 import examinateur.Exam;
-// import org.junit.jupiter.api.Test;
-// import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-//public class testExam {
-//
-//    @Test
-//    public void testHasStudentPassed(){
-//
-//    }
-//}
+class Test2 {
+
+    @Test
+    public void test() {
+        //Arrange
+
+        //Act
+
+        //Assert
+
+    }
+}
