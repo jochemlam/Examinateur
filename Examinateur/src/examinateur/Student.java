@@ -9,14 +9,9 @@ public class Student {
     private int examsPassed;
 
     public Student(String name, int number) {
-        if (isNumberAvailable(number)) {
-            this.name = name;
-            this.number = number;
-            this.examsPassed = 0;
-        }
-        else {
-            System.out.println("Dit studentnummer is al toegewezen aan een student");
-        }
+        this.name = name;
+        this.number = number;
+        this.examsPassed = 0;
     }
 
     public void deleteStudent() {
@@ -24,7 +19,10 @@ public class Student {
     }
 
     public void addStudentToList() {
-        ApplicationManager.students.add(this);
+        if (isNumberAvailable(this.number))
+            ApplicationManager.students.add(this);
+        else
+            System.out.println("Dit studentnummer is al toegewezen aan een student");
     }
 
     private boolean isNumberAvailable(int number) {
