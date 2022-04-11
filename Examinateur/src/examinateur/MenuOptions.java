@@ -66,42 +66,39 @@ class OptionDeleteStudent extends TextMenuItem {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
+
         if (ApplicationManager.students.size() == 0) {
             System.out.println("Er zijn geen studenten geregistreerd.");
-            return;
         }
+        else {
+            int studentNumber;
 
-        int number;
+            try {
+                System.out.println("Vul het leerlingnummer in van de student die je wilt verwijderen.");
+                studentNumber = scanner.nextInt();
+                scanner.nextLine();
 
-        try {
-            System.out.println("Vul het leerlingnummer in van de student die je wilt verwijderen.");
-            number = scanner.nextInt();
-            scanner.nextLine();
-        }
-        catch (Exception e) {
-            System.out.println("Er is iets fout gegaan bij het invoeren van het studentnummer.");
-            System.out.println("Probeer het opnieuw.");
-            return;
-        }
-
-        for (int i = 0; i < ApplicationManager.students.size(); i++) {
-            // wanneer het opgeslagen studentnummer overeen komt met het ingevoerde studentnummer
-            if (ApplicationManager.students.get(i).getNumber() == number) {
-
-                System.out.println("Weet je zeker dat je deze student wilt verwijderen? J/N");
-                if (!scanner.nextLine().equalsIgnoreCase("j")) {
-                    return;
+                boolean studentFound = false;
+                int i = 0;
+                while (!studentFound && i < ApplicationManager.students.size()) {
+                    if (ApplicationManager.students.get(i).getNumber() == studentNumber) {
+                        System.out.println("Student " + ApplicationManager.students.get(i).getName() + " is verwijderd");
+                        ApplicationManager.students.remove(i);
+                        studentFound = true;
+                    }
+                    i++;
                 }
+                if (!studentFound)
+                    System.out.println("Dit student nummber is niet toegewezen aan een student");
+            } catch (Exception e) {
+                System.out.println("Er is iets fout gegaan bij het invoeren van het studentnummer.");
+                System.out.println("Probeer het opnieuw.");
             }
-            else {
-                System.out.println("Dit studentnummer is niet toegewezen aan een student.");
-                return;
-            }
-            System.out.println("Student " + ApplicationManager.students.get(i).getName() + " (" + ApplicationManager.students.get(i).getNumber() + ") is verwijderd.");
-            ApplicationManager.students.get(i).deleteStudent();
         }
+
         pressEnterToContinue();
     }
+
 }
 
 class OptionTakeExam extends TextMenuItem {
