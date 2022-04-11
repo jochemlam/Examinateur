@@ -8,7 +8,7 @@ import java.util.Scanner;
 class OptionExamList extends TextMenuItem {
 
     public OptionExamList() {
-        super("1", "Lijst met examens");
+        super("Lijst met examens");
     }
 
     @Override
@@ -21,7 +21,7 @@ class OptionExamList extends TextMenuItem {
 class OptionStudentList extends TextMenuItem {
 
     public OptionStudentList() {
-        super("2", "Lijst met studenten");
+        super("Lijst met studenten");
     }
 
     @Override
@@ -34,7 +34,7 @@ class OptionStudentList extends TextMenuItem {
 class OptionEnlistStudent extends TextMenuItem {
 
     public OptionEnlistStudent() {
-        super("3", "Nieuwe student inschrijven");
+        super("Nieuwe student inschrijven");
     }
 
     @Override
@@ -60,7 +60,7 @@ class OptionEnlistStudent extends TextMenuItem {
 class OptionDeleteStudent extends TextMenuItem {
 
     public OptionDeleteStudent() {
-        super("4", "Student verwijderen");
+        super("Student verwijderen");
     }
 
     @Override
@@ -107,7 +107,7 @@ class OptionDeleteStudent extends TextMenuItem {
 class OptionTakeExam extends TextMenuItem {
 
     public OptionTakeExam() {
-        super("5", "Examen afnemen");
+        super("Examen afnemen");
     }
 
     @Override
@@ -120,7 +120,7 @@ class OptionTakeExam extends TextMenuItem {
 class OptionDidStudentPass extends TextMenuItem {
 
     public OptionDidStudentPass() {
-        super("6", "Is de student geslaagd voor de test");
+        super("Is de student geslaagd voor de test");
     }
 
     @Override
@@ -132,7 +132,7 @@ class OptionDidStudentPass extends TextMenuItem {
 
 class OptionShowExamsPassedByStudent extends TextMenuItem {
     public OptionShowExamsPassedByStudent() {
-        super("7", "Welke examens heeft de student gehaald?");
+        super("Welke examens heeft de student gehaald?");
     }
 
     @Override
@@ -148,7 +148,7 @@ class OptionShowExamsPassedByStudent extends TextMenuItem {
 
 class OptionStudentWithMostExamsPassed extends TextMenuItem {
     public OptionStudentWithMostExamsPassed() {
-        super("8", "Welke student heeft de meeste examens gehaald?");
+        super("Welke student heeft de meeste examens gehaald?");
     }
 
     @Override
@@ -160,7 +160,7 @@ class OptionStudentWithMostExamsPassed extends TextMenuItem {
 class OptionFinish extends TextMenuItem {
 
     public OptionFinish() {
-        super("X", "Afsluiten");
+        super("Afsluiten");
     }
 
     @Override

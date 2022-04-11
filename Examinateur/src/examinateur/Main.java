@@ -12,18 +12,18 @@ public class Main {
     }
 
     private static void run() {
-        TextMenu menu = new TextMenu();
+        ITextMenu menu = new TextMenu();
 
-        menu.add(new OptionExamList());
-        menu.add(new OptionStudentList());
-        menu.add(new OptionEnlistStudent());
-        menu.add(new OptionDeleteStudent());
-        menu.add(new OptionTakeExam());
-        menu.add(new OptionDidStudentPass());
-        menu.add(new OptionShowExamsPassedByStudent());
-        menu.add(new OptionStudentWithMostExamsPassed());
+        menu.add("1", new OptionExamList());
+        menu.add("2", new OptionStudentList());
+        menu.add("3", new OptionEnlistStudent());
+        menu.add("4", new OptionDeleteStudent());
+        menu.add("5", new OptionTakeExam());
+        menu.add("6", new OptionDidStudentPass());
+        menu.add("7", new OptionShowExamsPassedByStudent());
+        menu.add("8", new OptionStudentWithMostExamsPassed());
 
-        menu.add(new OptionFinish());
+        menu.add("X", new OptionFinish());
 
         while (Main.isRunning) {
             menu.show();
