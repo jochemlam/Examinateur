@@ -27,6 +27,8 @@ class TextMenu {
         System.out.print("Please make your choice: ");
 
         String choice = scanner.next();
+        choice = choice.toUpperCase();
+
         if (menuItems.containsKey(choice))
             menuItems.get(choice).execute();
         else

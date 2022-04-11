@@ -22,7 +22,6 @@ public class Main {
         menu.add(new OptionDidStudentPass());
         menu.add(new OptionShowExamsPassedByStudent());
         menu.add(new OptionStudentWithMostExamsPassed());
-        menu.add(new OptionTest());
 
         menu.add(new OptionFinish());
 
