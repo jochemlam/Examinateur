@@ -160,7 +160,7 @@ class OptionStudentWithMostExamsPassed extends TextMenuItem {
 class OptionFinish extends TextMenuItem {
 
     public OptionFinish() {
-        super("X", "Afluisten");
+        super("X", "Afsluiten");
     }
 
     @Override
