@@ -8,7 +8,7 @@ import java.util.Scanner;
 class OptionExamList extends TextMenuItem {
 
     public OptionExamList() {
-        super("1", "Lijst met examens");
+        super("Lijst met examens");
     }
 
     @Override
@@ -21,7 +21,7 @@ class OptionExamList extends TextMenuItem {
 class OptionStudentList extends TextMenuItem {
 
     public OptionStudentList() {
-        super("2", "Lijst met studenten");
+        super("Lijst met studenten");
     }
 
     @Override
@@ -34,7 +34,7 @@ class OptionStudentList extends TextMenuItem {
 class OptionEnlistStudent extends TextMenuItem {
 
     public OptionEnlistStudent() {
-        super("3", "Nieuwe student inschrijven");
+        super("Nieuwe student inschrijven");
     }
 
     @Override
@@ -60,54 +60,51 @@ class OptionEnlistStudent extends TextMenuItem {
 class OptionDeleteStudent extends TextMenuItem {
 
     public OptionDeleteStudent() {
-        super("4", "Student verwijderen");
+        super("Student verwijderen");
     }
 
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
+
         if (ApplicationManager.students.size() == 0) {
             System.out.println("Er zijn geen studenten geregistreerd.");
-            return;
         }
+        else {
+            int studentNumber;
 
-        int number;
+            try {
+                System.out.println("Vul het leerlingnummer in van de student die je wilt verwijderen.");
+                studentNumber = scanner.nextInt();
+                scanner.nextLine();
 
-        try {
-            System.out.println("Vul het leerlingnummer in van de student die je wilt verwijderen.");
-            number = scanner.nextInt();
-            scanner.nextLine();
-        }
-        catch (Exception e) {
-            System.out.println("Er is iets fout gegaan bij het invoeren van het studentnummer.");
-            System.out.println("Probeer het opnieuw.");
-            return;
-        }
-
-        for (int i = 0; i < ApplicationManager.students.size(); i++) {
-            // wanneer het opgeslagen studentnummer overeen komt met het ingevoerde studentnummer
-            if (ApplicationManager.students.get(i).getNumber() == number) {
-
-                System.out.println("Weet je zeker dat je deze student wilt verwijderen? J/N");
-                if (!scanner.nextLine().equalsIgnoreCase("j")) {
-                    return;
+                boolean studentFound = false;
+                int i = 0;
+                while (!studentFound && i < ApplicationManager.students.size()) {
+                    if (ApplicationManager.students.get(i).getNumber() == studentNumber) {
+                        System.out.println("Student " + ApplicationManager.students.get(i).getName() + " is verwijderd");
+                        ApplicationManager.students.remove(i);
+                        studentFound = true;
+                    }
+                    i++;
                 }
+                if (!studentFound)
+                    System.out.println("Dit student nummber is niet toegewezen aan een student");
+            } catch (Exception e) {
+                System.out.println("Er is iets fout gegaan bij het invoeren van het studentnummer.");
+                System.out.println("Probeer het opnieuw.");
             }
-            else {
-                System.out.println("Dit studentnummer is niet toegewezen aan een student.");
-                return;
-            }
-            System.out.println("Student " + ApplicationManager.students.get(i).getName() + " (" + ApplicationManager.students.get(i).getNumber() + ") is verwijderd.");
-            ApplicationManager.students.get(i).deleteStudent();
         }
+
         pressEnterToContinue();
     }
+
 }
 
 class OptionTakeExam extends TextMenuItem {
 
     public OptionTakeExam() {
-        super("5", "Examen afnemen");
+        super("Examen afnemen");
     }
 
     @Override
@@ -120,7 +117,7 @@ class OptionTakeExam extends TextMenuItem {
 class OptionDidStudentPass extends TextMenuItem {
 
     public OptionDidStudentPass() {
-        super("6", "Is de student geslaagd voor de test");
+        super("Is de student geslaagd voor de test");
     }
 
     @Override
@@ -132,7 +129,7 @@ class OptionDidStudentPass extends TextMenuItem {
 
 class OptionShowExamsPassedByStudent extends TextMenuItem {
     public OptionShowExamsPassedByStudent() {
-        super("7", "Welke examens heeft de student gehaald?");
+        super("Welke examens heeft de student gehaald?");
     }
 
     @Override
@@ -148,7 +145,7 @@ class OptionShowExamsPassedByStudent extends TextMenuItem {
 
 class OptionStudentWithMostExamsPassed extends TextMenuItem {
     public OptionStudentWithMostExamsPassed() {
-        super("8", "Welke student heeft de meeste examens gehaald?");
+        super("Welke student heeft de meeste examens gehaald?");
     }
 
     @Override
@@ -160,7 +157,7 @@ class OptionStudentWithMostExamsPassed extends TextMenuItem {
 class OptionFinish extends TextMenuItem {
 
     public OptionFinish() {
-        super("X", "Afsluiten");
+        super("Afsluiten");
     }
 
     @Override
