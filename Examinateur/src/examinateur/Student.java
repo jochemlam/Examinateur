@@ -62,4 +62,12 @@ public class Student {
     public void setExamsPassed(int examsPassed) {
         this.examsPassed = examsPassed;
     }
+
+    public static void addExamsPassed(int studentNumber){
+        for (int i = 0; i < ApplicationManager.students.size(); i++){
+            if (studentNumber == ApplicationManager.students.get(i).getNumber()){
+                ApplicationManager.students.get(i).setExamsPassed(ApplicationManager.students.get(i).getExamsPassed() + 1);
+            }
+        }
+    }
 }

@@ -36,11 +36,7 @@ public class Exam {
 
     public boolean hasStudentPassed() {
         if (amountCorrect > (exercises.size() / 2)) {
-            for (int i = 0; i < ApplicationManager.students.size(); i++){
-                if (studentNumber == ApplicationManager.students.get(i).getNumber()){
-                    ApplicationManager.students.get(i).setExamsPassed(+ 1);
-                }
-            }
+            Student.addExamsPassed(studentNumber);
             return true;
         }
         else {
@@ -57,13 +53,14 @@ public class Exam {
         }
         System.out.println("je hebt " + amountCorrect + "/" + exercises.size() + " vragen goed beantwoord.");
         System.out.println("Dit examen is gemaakt door " + studentNumber);
-        ApplicationManager.results.add(new Result(this, studentNumber, hasStudentPassed()));
-        showPassResults();
+        boolean hasStudentPassed = hasStudentPassed();
+        ApplicationManager.results.add(new Result(this, studentNumber, hasStudentPassed));
+        showPassResults(hasStudentPassed);
     }
 
-    private void showPassResults() {
+    private void showPassResults(boolean hasStudentPassed) {
 
-        if (hasStudentPassed()) {
+        if (hasStudentPassed) {
             System.out.println();
             System.out.println("Je bent geslaagd!");
             System.out.println();
