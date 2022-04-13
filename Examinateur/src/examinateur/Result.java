@@ -22,4 +22,15 @@ public class Result {
     public boolean isGraduated() {
         return this.hasPassed;
     }
+
+    public static boolean getSpecificExamResult(int studentNumber, String TestName) {
+        for (Result result : ApplicationManager.results) {
+            if (studentNumber == result.getStudentNumber()) {
+                if (TestName.equalsIgnoreCase(result.getExam().getExamSubject())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

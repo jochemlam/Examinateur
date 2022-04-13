@@ -47,26 +47,26 @@ public class ApplicationManager {
         }
     }
 
-    public static void hasStudentPassedSpecificExam(){
+    public static void hasStudentPassedSpecificExam() {
         System.out.println("Vul het studentnummer in van de student waarvan je het resultaat van wilt zien:");
         int studentNumber = scanner.nextInt();
-        System.out.println("Vul de toetsnaam in van de toets waarvan je het resultaat wilt zien:");
-        scanner.nextLine();
-        String TestName = scanner.nextLine();
+        String TestName = "";
 
-        for (Result result : results) {
-            if (studentNumber == result.getStudentNumber()) {
-                if (TestName.equalsIgnoreCase(result.getExam().getExamSubject())) {
-                    if (result.isGraduated()) {
-                        System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het examen: " + result.getExam().getExamSubject());
-                    } else {
-                        System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het exmamen: " + result.getExam().getExamSubject());
-                    }
-                }       //add boolean
-            }
+        System.out.println("Maak een keuze uit de volgende examens: ");
+        for (int i = 0; i < exams.size(); i++) {
+            System.out.println(i + 1 + ") " + exams.get(i).getExamSubject());
         }
-    }
+        Short choice = scanner.nextShort();
 
+        if (choice <= exams.size()) {
+            TestName = exams.get(choice - 1).getExamSubject();
+            if (Result.getSpecificExamResult(studentNumber, TestName)) {
+                System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het examen: " + TestName);
+            } else {
+                System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het exmamen: " + TestName);
+            }
+        }       //add boolean
+    }
 
     public static void showStudents(ArrayList<Student> list) { // vraagt alle studentnamen en nummers op en print deze uit
         for (int i = 0; i < list.size(); i++) {
