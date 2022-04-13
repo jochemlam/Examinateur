@@ -1,17 +1,13 @@
-import examinateur.Answer;
-import examinateur.Exam;
-import examinateur.Exercise;
+import examinateur.*;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-
-public class testExam {
+public class testResult {
 
     @Test
-    public void testHasStudentPassed() {
-        //Arrange
+    public void testGetSpecificExamResult(){
         ArrayList<Exercise> questions = new ArrayList<>();
         questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
         questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
@@ -20,14 +16,8 @@ public class testExam {
         questions.add(new Exercise("welke vraag is dit?", new Answer("5")));
 
         Exam exam = new Exam(questions, "Cyber-Security");
+        ApplicationManager.results.add(new Result(exam, 1, true));
 
-        //Act
-        exam.setAmountCorrect((short) 3);
-
-        //Assert
-        assertEquals(true, exam.hasStudentPassed());
-
+        Assert.assertEquals(true, Result.getSpecificExamResult(1,"Cyber-Security"));
     }
 }
-
-//
