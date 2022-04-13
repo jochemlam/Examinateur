@@ -1,11 +1,9 @@
-import examinateur.Exam;
-import org.junit.Assert;
 import org.junit.Test;
 
-class Test2 {
+class testExam {
 
     @Test
-    public void test() {
+    public void testHasStudentPassed() {
         //Arrange
 
         //Act
@@ -14,3 +12,5 @@ class Test2 {
 
     }
 }
+
+//
