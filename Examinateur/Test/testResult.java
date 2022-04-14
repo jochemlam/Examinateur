@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class testResult {
 
     @Test
-    public void testGetSpecificExamResult(){
+    public void testGetSpecificExamResult(){ // Het test of getSpecificExamResult bij het goede examen en student checkt wat de value is van isGraduated.
         ArrayList<Exercise> questions = new ArrayList<>();
         questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
         questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
