@@ -35,15 +35,14 @@ public class ApplicationManager {
                 // is de student geslaagd
                 if (result.isGraduated()) {
                     System.out.println("De student met leerlingnummer " + studentNumber + " is geslaagd voor het volgende examen: " + result.getExam().getExamSubject());
-                }
-                else {
+                } else {
                     System.out.println("De student met leerlingnummer " + studentNumber + " is niet geslaagd voor het volgende examen: " + result.getExam().getExamSubject());
                 }
                 notfound = false;
             }
         }
         if (notfound) {
-        System.out.println("De student met leerlingnummer " + studentNumber + " heeft nog geen resultaten");
+            System.out.println("De student met leerlingnummer " + studentNumber + " heeft nog geen resultaten");
         }
     }
 
@@ -74,16 +73,16 @@ public class ApplicationManager {
         }
     }
 
-    public static void showExams(){ //vraagt alle examen onderwerpen op en print die uit.
+    public static void showExams() { //vraagt alle examen onderwerpen op en print die uit.
         System.out.println("Dit zijn alle examens: ");
-        for (int i = 0; i < exams.size(); i++){
+        for (int i = 0; i < exams.size(); i++) {
             System.out.println(exams.get(i).getExamSubject());
         }
     }
 
-    public static void askExams(){ //vraagt alle examen onderwerpen op en print die uit.
+    public static void askExams() { //vraagt alle examen onderwerpen op en print die uit.
         System.out.println("Maak een keuze uit de volgende examens: ");
-        for (int i = 0; i < exams.size(); i++){
+        for (int i = 0; i < exams.size(); i++) {
             System.out.println(i + 1 + ") " + exams.get(i).getExamSubject());
         }
 
@@ -91,27 +90,29 @@ public class ApplicationManager {
 
         if (choice <= exams.size()) {
             exams.get(choice - 1).startExam();
-        }
-        else {
+        } else {
             System.out.println("Dit examen bestaat niet, kies een van de beschikbare opties.");
             askExams();
         }
 
     }
 
-    public static void hasPassedMost(){
+    public static Student hasPassedMost() {
         int amount = 0;
+        Student s = null;
 
-        for (int i = 0; i < students.size(); i++){
-            if (students.get(i).getExamsPassed() > amount){
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getExamsPassed() > amount) {
                 amount = students.get(i).getExamsPassed();
             }
         }
 
-        for (int a = 0; a < students.size(); a++){
-            if (students.get(a).getExamsPassed() == amount){
-                System.out.println("Student: " + students.get(a).getName() + " (" + students.get(a).getNumber() + ") " + " Heeft de meeste examens gehaald dit zijn er: " + amount);
+        for (int a = 0; a < students.size(); a++) {
+            if (students.get(a).getExamsPassed() == amount) {
+                s = students.get(a);
             }
         }
+        return s;
     }
+
 }

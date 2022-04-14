@@ -150,8 +150,17 @@ class OptionStudentWithMostExamsPassed extends TextMenuItem {
 
     @Override
     public void execute() {
-        ApplicationManager.hasPassedMost();
+        try {
+            Student s = ApplicationManager.hasPassedMost();
+            System.out.println("Student: " + s.getName() + " (" + s.getNumber() + ") " + " Heeft de meeste examens gehaald dit zijn er: " + s.getExamsPassed());
+        }
+        catch (Exception e){
+        System.out.println("Er bestaan nog geen studenten.");
+        System.out.println("");
+
+        }
     }
+
 }
 
 class OptionFinish extends TextMenuItem {
