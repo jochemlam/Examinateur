@@ -102,4 +102,8 @@ public class Exam {
     public String getExamSubject() {
         return examSubject;
     }
+
+    public void setAmountCorrect(short amountCorrect) {
+        this.amountCorrect = amountCorrect;
+    }
 }
