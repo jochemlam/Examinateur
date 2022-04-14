@@ -6,15 +6,15 @@ import static org.junit.Assert.assertEquals;
 public class testExercise {
 
     @Test
-    public void testCheckAnswer() {
+    public void testCheckAnswer() { // Deze test checkt of checkAnswer het userAnswer goed vergelijkt met correctAnswer en dit resultaat goed doorvoert.
         // Arrange
-        String expectedResult = "ja";
+        Boolean expectedResult = true;
         Exercise exercise = new Exercise("Werkt deze test naar behoren?", new Answer("ja"));
 
         // Act
         exercise.userAnswer = new Answer("ja");
         exercise.checkAnswer();
-        String actualResult = exercise.userAnswer.get();
+        Boolean actualResult = exercise.result;
         // Assert
         assertEquals(expectedResult, actualResult);
     }
