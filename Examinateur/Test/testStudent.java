@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 public class testStudent {
 
     @Test
-    public void testAddExamsPassed(){
+    public void testAddExamsPassed(){ // Test of AddExamsPassed bij de meegegeven student, 1 toevoegt bijExamsPassed.
         //Arrange
         ApplicationManager.students.add(new Student("Maikel Bazuin", 21032246));
         //Act

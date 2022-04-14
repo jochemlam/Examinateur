@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class testExam {
 
     @Test
-    public void testHasStudentPassed() {
+    public void testHasStudentPassed() { // Deze test checkt of de berekening in hasStudentPassed klopt en dat het correct wordt ingevoerd.
         //Arrange
         ArrayList<Exercise> questions = new ArrayList<>();
         questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
