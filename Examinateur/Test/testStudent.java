@@ -17,6 +17,14 @@ public class testStudent {
 
     @Test
     public void testDeleteStudent() {
-        //TODO: make test to see if delete student works correctly -Sebastian
+        //Arrange
+        int expectedResult = 0;
+        Student testStudent = new Student("Sebastian M", 123);
+        ApplicationManager.students.add(testStudent);
+        //Act
+        ApplicationManager.students.remove(testStudent);
+        int actualResult = ApplicationManager.students.size();
+        //Assert
+        assertEquals(expectedResult, actualResult);
     }
 }
