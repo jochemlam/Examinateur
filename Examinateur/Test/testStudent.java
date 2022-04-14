@@ -14,4 +14,9 @@ public class testStudent {
         //Assert
         assertEquals(1, ApplicationManager.students.get(0).getExamsPassed());
     }
+
+    @Test
+    public void testDeleteStudent() {
+        //TODO: make test to see if delete student works correctly -Sebastian
+    }
 }
