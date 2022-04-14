@@ -6,16 +6,6 @@ import static org.junit.Assert.assertEquals;
 public class testStudent {
 
     @Test
-    public void testAddExamsPassed(){ // Test of AddExamsPassed bij de meegegeven student, 1 toevoegt bijExamsPassed.
-        //Arrange
-        ApplicationManager.students.add(new Student("Maikel Bazuin", 21032246));
-        //Act
-        Student.addExamsPassed(21032246);
-        //Assert
-        assertEquals(1, ApplicationManager.students.get(0).getExamsPassed());
-    }
-
-    @Test
     public void testDeleteStudent() {
         //Arrange
         int expectedResult = 0;
@@ -27,4 +17,18 @@ public class testStudent {
         //Assert
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void testAddExamsPassed(){ // Test of AddExamsPassed bij de meegegeven student, 1 toevoegt bijExamsPassed.
+        //Arrange
+        int expectedResult = 1;
+        ApplicationManager.students.add(new Student("Maikel Bazuin", 21032246));
+
+        //Act
+        Student.addExamsPassed(21032246);
+        int actualResult = ApplicationManager.students.get(0).getExamsPassed();
+        //Assert
+        assertEquals(expectedResult, actualResult);
+    }
+
 }
