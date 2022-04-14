@@ -8,6 +8,8 @@ public class testResult {
 
     @Test
     public void testGetSpecificExamResult(){ // Het test of getSpecificExamResult bij het goede examen en student checkt wat de value is van isGraduated.
+        //Arrange
+        boolean expectedResult = true;
         ArrayList<Exercise> questions = new ArrayList<>();
         questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
         questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
@@ -18,6 +20,10 @@ public class testResult {
         Exam exam = new Exam(questions, "Cyber-Security");
         ApplicationManager.results.add(new Result(exam, 1, true));
 
-        Assert.assertEquals(true, Result.getSpecificExamResult(1,"Cyber-Security"));
+        //Act
+        boolean actualResult = Result.getSpecificExamResult(1,"Cyber-Security");
+
+        //Assert
+        Assert.assertEquals(expectedResult, actualResult);
     }
 }

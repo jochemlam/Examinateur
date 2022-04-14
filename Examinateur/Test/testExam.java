@@ -12,6 +12,7 @@ public class testExam {
     @Test
     public void testHasStudentPassed() { // Deze test checkt of de berekening in hasStudentPassed klopt en dat het correct wordt ingevoerd.
         //Arrange
+        boolean expectedResult = true;
         ArrayList<Exercise> questions = new ArrayList<>();
         questions.add(new Exercise("Over welke poort worden https-websites geladen?", new Answer("443")));
         questions.add(new Exercise("Welke is GEEN naam van malware?", new Answer("Achilles")));
@@ -23,9 +24,10 @@ public class testExam {
 
         //Act
         exam.setAmountCorrect((short) 3);
+        boolean actualResult = exam.hasStudentPassed();
 
         //Assert
-        assertEquals(true, exam.hasStudentPassed());
+        assertEquals(expectedResult, actualResult);
 
     }
 }
